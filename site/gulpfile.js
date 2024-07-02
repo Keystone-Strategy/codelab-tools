@@ -343,7 +343,7 @@ gulp.task('serve', gulp.series(
     'watch',
     () => {
       return gulp.src('build')
-        .pipe(webserver(opts.webserver()));
+        .pipe(webserver(opts.webserver({host: '0.0.0.0', port: 7999, open: true})));
     }
   )
 ));
@@ -353,7 +353,7 @@ gulp.task('serve', gulp.series(
 // publishing.
 gulp.task('serve:dist', gulp.series('dist', () => {
   return gulp.src('dist')
-    .pipe(webserver(opts.webserver()));
+    .pipe(webserver(opts.webserver({host: '0.0.0.0'})));
 }));
 
 //
