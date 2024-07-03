@@ -756,12 +756,9 @@ class Codelab extends HTMLElement {
    * @return {string}
    */
   getHomeUrl_() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const returnTo = urlParams.get('return_to');
-      if (returnTo) {
-          return returnTo;
-      }
-      return '/';
+    const returnToMeta = document.querySelector('meta[name="return_to"]');
+    const returnTo = returnToMeta ? returnToMeta.getAttribute('content') : '/';
+    return returnTo;
   }
 
   /**
